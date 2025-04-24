@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro Biblioteca</title>
+    <style>
+        .form-msg-error {
+            color: red;
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+        input, select {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cadastro Biblioteca</h1>
+    <form class="form-registrar" onsubmit="return validar()">
+        <p><b>Nome:</b></p>
+        <input type="text" class="form-campo" id="nome" placeholder="Insira seu nome">
+        <div class="form-msg-error" id="msg-nome"></div>
+        
+        <p><b>Sobrenome:</b></p>
+        <input type="text" class="form-campo" id="sobrenome" placeholder="Insira seu sobrenome">
+        <div class="form-msg-error" id="msg-sobrenome"></div>
+        
+        <p><b>E-mail:</b></p>
+        <input type="email" class="form-campo" id="email" placeholder="Insira seu e-mail">
+        <div class="form-msg-error" id="msg-email"></div>
+        
+        <p><b>Senha:</b></p>
+        <input type="password" class="form-campo" id="senha" placeholder="Insira sua senha">
+        <div class="form-msg-error" id="msg-senha"></div>
+        
+        <p><b>Telefone:</b></p>
+        <input type="tel" class="form-campo" id="telefone" placeholder="Insira seu telefone">
+        <div class="form-msg-error" id="msg-telefone"></div>
+        
+        <p><b>CEP:</b></p>
+        <input type="text" class="form-campo" id="cep" placeholder="Insira seu CEP">
+        <div class="form-msg-error" id="msg-cep"></div>
+        
+        <p><b>Sexo:</b></p>
+        <select class="form-campo" id="sexo">
+            <option value="">Selecione</option>
+            <option>Masculino</option>
+            <option>Feminino</option>
+            <option>Outro</option>
+        </select>
+        <div class="form-msg-error" id="msg-sexo"></div>
+        
+        <p>
+            <input type="checkbox" id="newsletter">
+            <label for="newsletter"><b>Desejo receber notícias</b></label>
+        </p>
+        
+        <input type="submit" value="Cadastrar" class="form-campo-registrar">
+    </form>
+
+    <script>
+        function validar() {
+            var valido = true;
+            var nome = document.getElementById("nome").value;
+            var sobrenome = document.getElementById("sobrenome").value;
+            var email = document.getElementById("email").value;
+            var senha = document.getElementById("senha").value;
+            var telefone = document.getElementById("telefone").value;
+            var cep = document.getElementById("cep").value;
+            var sexo = document.getElementById("sexo").value;
+            
+            // Validação do Nome
+            if(nome === "") {
+                document.getElementById("msg-nome").innerHTML = "* O nome é obrigatório";
+                valido = false;
+            } else if(nome.length < 2) {
+                document.getElementById("msg-nome").innerHTML = "* O nome deve ter pelo menos 2 caracteres";
+                valido = false;
+            } else {
+                document.getElementById("msg-nome").innerHTML = "";
+            }
+            
+            // Validação do Sobrenome
+            if(sobrenome === "") {
+                document.getElementById("msg-sobrenome").innerHTML = "* O sobrenome é obrigatório";
+                valido = false;
+            } else {
+                document.getElementById("msg-sobrenome").innerHTML = "";
+            }
+            
+            // Validação do Email
+            if(email === "") {
+                document.getElementById("msg-email").innerHTML = "* O email é obrigatório";
+                valido = false;
+            } else if(!email.includes("@") || !email.includes(".")) {
+                document.getElementById("msg-email").innerHTML = "* Insira um email válido";
+                valido = false;
+            } else {
+                document.getElementById("msg-email").innerHTML = "";
+            }
+            
+            // Validação da Senha
+            if(senha === "") {
+                document.getElementById("msg-senha").innerHTML = "* A senha é obrigatória";
+                valido = false;
+            } else if(senha.length < 6) {
+                document.getElementById("msg-senha").innerHTML = "* A senha deve ter pelo menos 6 caracteres";
+                valido = false;
+            } else {
+                document.getElementById("msg-senha").innerHTML = "";
+            }
+            
+            // Validação do Telefone
+            if(telefone === "") {
+                document.getElementById("msg-telefone").innerHTML = "* O telefone é obrigatório";
+                valido = false;
+            } else if(telefone.replace(/\D/g, '').length < 10) {
+                document.getElementById("msg-telefone").innerHTML = "* Insira um telefone válido";
+                valido = false;
+            } else {
+                document.getElementById("msg-telefone").innerHTML = "";
+            }
+            
+            // Validação do CEP
+            if(cep === "") {
+                document.getElementById("msg-cep").innerHTML = "* O CEP é obrigatório";
+                valido = false;
+            } else if(cep.replace(/\D/g, '').length < 8) {
+                document.getElementById("msg-cep").innerHTML = "* Insira um CEP válido";
+                valido = false;
+            } else {
+                document.getElementById("msg-cep").innerHTML = "";
+            }
+            
+            // Validação do Sexo
+            if(sexo === "") {
+                document.getElementById("msg-sexo").innerHTML = "* Selecione o sexo";
+                valido = false;
+            } else {
+                document.getElementById("msg-sexo").innerHTML = "";
+            }
+            
+            return valido;
+        }
+    </script>
+</body>
+</html>
