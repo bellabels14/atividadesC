@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lâmpada SVG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        #lampada-svg {
+            width: 150px;
+            height: 200px;
+            margin: 20px 0;
+        }
+        #bulbo {
+            transition: fill 0.3s;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #ligar {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #desligar {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lâmpada SVG</h1>
+        
+        <svg id="lampada-svg" viewBox="0 0 100 150">
+            <!-- Base da lâmpada -->
+            <rect x="40" y="130" width="20" height="10" fill="#666"/>
+            
+            <!-- Suporte -->
+            <path d="M45,40 L45,130 L55,130 L55,40" fill="#888"/>
+            
+            <!-- Bulbo da lâmpada (parte que muda de cor) -->
+            <path id="bulbo" d="M30,40 Q50,0 70,40 Q70,60 50,80 Q30,60 30,40" fill="#ccc"/>
+        </svg>
+        
+        <div class="controls">
+            <button id="ligar">Ligar</button>
+            <button id="desligar">Desligar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
