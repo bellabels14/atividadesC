@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><h1>Login</h1></title>
+</head>
+<body>
+    <form class="form-registrar" onsubmit="return validar()">
+        <H1>LOGIN</H1>
+        <br>
+        <input type="text" placeholder="Login usuario" class="form-campo" id="email">
+        <div class="form-msg-error" id="msg-email"></div>
+        <br>
+        <H1>SENHA</H1>
+        <input type="text" placeholder="Senha" class="form-campo" id="senha">
+        <div class="form-msg-error" id="msg-senha"></div>
+        <br>
+        <input type="text" placeholder="Confirmar senha" class="form-campo" id="confirmar-senha">
+        <div class="form-msg-error" id="msg-confirmar-senha"></div>
+        <br>
+        <input type="submit" value="Registrar" class="form-campo-registrar">
+    </form>
+    <script>
+        function validar(){
+            var email = document.getElementById("email").value;
+            var senha = document.getElementById("senha").value;
+            var confirmarsenha = document.getElementById("confirmar-senha").value;
+            var usuario_correto = /^[A-Za-z]+$/;
+            var valido = true;
+         
+            if(email=="") {
+                document.getElementById("msg-email").innerHTML="* O email é obrigatório";
+                valido = false;
+            }else{
+                document.getElementById("msg-email").innerHTML="";
+            }
+            if(senha.length < 5 || senha.length > 16) {
+                document.getElementById("msg-senha").innerHTML="* A senha precisa conter de 5 a 16 caracteres";
+                valido = false;
+            }else{
+                document.getElementById("msg-senha").innerHTML="";
+            }
+         
+            if(confirmarsenha=="") {
+                document.getElementById("msg-confirmar-senha").innerHTML="* Confirme a senha";
+                valido = false;
+            }else{
+                document.getElementById("msg-confirmar-senha").innerHTML="";
+            }
+            return valido;
+        }
+        </script>
+    </body>
+    </html>
+</body>
+</html>
